@@ -1,4 +1,5 @@
-﻿using Application.CQRS.Products.Queries;
+﻿using Application.Common;
+using Application.CQRS.Products.Queries;
 using Domain.Entities;
 using Domain.Repositories;
 
@@ -8,8 +9,9 @@ public class GetAllProductsHandler(IProductRepository repository)
 {
     private readonly IProductRepository _repository = repository;
 
-    public async Task<IEnumerable<Product>> HandleAsync(GetAllProductsQuery query)
+    public async Task<Result<IEnumerable<Product>>> HandleAsync(GetAllProductsQuery query)
     {
-        return await _repository.GetAllAsync();
+        var products = await _repository.GetAllAsync();
+        return Result<IEnumerable<Product>>.Success(products);
     }
 }
