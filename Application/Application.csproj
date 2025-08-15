@@ -2,6 +2,10 @@
 
   <ItemGroup>
     <ProjectReference Include="..\Domain\Domain.csproj" />
+    <PackageReference Include="DotNetCore.CAP" Version="8.3.5" />
+    <PackageReference Include="DotNetCore.CAP.Dashboard" Version="8.3.5" />
+    <PackageReference Include="DotNetCore.CAP.PostgreSql" Version="8.3.5" />
+	<PackageReference Include="DotNetCore.CAP.RabbitMQ" Version="8.3.5" />
     <ProjectReference Include="..\Infra.Data.DB\Infra.Data.DB.csproj" />
   </ItemGroup>
 

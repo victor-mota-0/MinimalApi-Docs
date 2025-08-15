@@ -11,9 +11,15 @@
     },
     "https": {
       "commandName": "Project",
-      "launchBrowser": true,
+      "launchBrowser": false,
       "environmentVariables": {
-        "ASPNETCORE_ENVIRONMENT": "Development"
+        "ASPNETCORE_ENVIRONMENT": "Development",
+        "ConnectionStrings__DefaultConnection": "Host=localhost;Port=5432;Database=projetos_nextgen;Username=adminNG;Password=adminlocal",
+        "RabbitMQ__HostName": "localhost",
+        "RabbitMQ__UserName": "adminNG",
+        "RabbitMQ__Password": "adminlocal",
+        "RabbitMQ__Port": "5672",
+        "RabbitMQ__ExchangeName": "nextgen_exchange"
       },
       "dotnetRunMessages": true,
       "applicationUrl": "https://localhost:7043;http://localhost:5124"

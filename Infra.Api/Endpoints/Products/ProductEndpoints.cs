@@ -1,5 +1,7 @@
-﻿using Application.CQRS.Products.Commands;
+﻿using Application.Consumers.Products;
+using Application.CQRS.Products.Commands;
 using Application.CQRS.Products.Handlers;
+using DotNetCore.CAP;
 
 namespace Infra.Api.Endpoints.Products;
 
@@ -23,6 +25,18 @@ public static class ProductEndpoints
                 return Results.BadRequest(new { error = result.Error });
 
             return Results.Ok(result.Value);
+        });
+
+        app.MapPost("/products/event", (ICapPublisher capBus) =>
+        {
+            capBus.Publish("product.created", new ProductCreatedDto
+            {
+                Id = Guid.NewGuid(),
+                Price = 100.0,
+                CreatedAt = DateTime.UtcNow
+            });
+
+            return Results.Ok(new { Message = "Event published" });
         });
     }
 }
